@@ -38,7 +38,7 @@ RUN yum install -y centos-release-dotnet centos-release-scl-rh && \
     rm -rf /var/cache/yum/*
 
 # Directory with the sources is set as the working directory.
-RUN mkdir /opt/app-root/src
+RUN mkdir -p /opt/app-root/src
 WORKDIR /opt/app-root/src
 
 # Since $HOME is set to /opt/app-root, the yum install may have created config
