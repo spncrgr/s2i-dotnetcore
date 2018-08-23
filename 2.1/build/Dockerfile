@@ -1,5 +1,4 @@
-# FROM dotnet/dotnet-21-runtime-centos7
-FROM registry.centos.org/dotnet/dotnet-21-centos7:latest
+FROM dotnet/dotnet-21-runtime-centos7
 # This image provides a .NET Core 2.1 environment you can use to run your .NET
 # applications.
 
