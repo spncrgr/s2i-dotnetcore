@@ -29,9 +29,9 @@ USER 0
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH.
 COPY ./s2i/bin/ /usr/libexec/s2i
 
-RUN yum install -y centos-release-dotnet centos-release-scl-rh && \
+RUN yum install -y -q centos-release-dotnet centos-release-scl-rh && \
     INSTALL_PKGS="rh-nodejs8-npm rh-nodejs8-nodejs-nodemon rh-dotnet21-dotnet-sdk-2.1 rsync" && \
-    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    yum install -y -q --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
 # yum cache files may still exist (and quite large in size)
@@ -41,7 +41,7 @@ RUN yum install -y centos-release-dotnet centos-release-scl-rh && \
 RUN mkdir -p /opt/app-root/src
 WORKDIR /opt/app-root/src
 
-RUN dotnet tool install --global dotnet-user-secrets
+RUN /opt/rh/rh-dotnet21/root/usr/lib64/dotnet/dotnet tool install --global dotnet-user-secrets
 
 # Since $HOME is set to /opt/app-root, the yum install may have created config
 # directories (such as ~/.pki/nssdb) there. These will be owned by root and can
