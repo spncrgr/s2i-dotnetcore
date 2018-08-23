@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 # Include filenames beginning with a '.' when installing the application source code.
 shopt -s dotglob
 
