@@ -41,6 +41,8 @@ RUN yum install -y centos-release-dotnet centos-release-scl-rh && \
 RUN mkdir -p /opt/app-root/src
 WORKDIR /opt/app-root/src
 
+RUN dotnet tool install --global dotnet-user-secrets
+
 # Since $HOME is set to /opt/app-root, the yum install may have created config
 # directories (such as ~/.pki/nssdb) there. These will be owned by root and can
 # cause actions that work on all of /opt/app-root to fail. So we need to fix
